@@ -4,7 +4,9 @@ import views from 'koa-views'
 import router from './router'
 import serve from 'koa-static'
 const app = new Koa()
-app.use(views(__dirname + '/views/', { extension: 'pug' }))
+app.use(
+  views(__dirname + '/views/', { extension: 'hbs', map: { hbs: 'handlebars' } })
+)
 app.use(router.routes())
 app.use(serve(__dirname + '/public'))
 
